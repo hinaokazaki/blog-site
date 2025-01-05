@@ -1,13 +1,13 @@
 import react from 'react';
-import './css/Nav.css'
+import classes from './css/Nav.module.css'
 
 export default function Nav() {
-    return (
-        <>
-            <div className="nav">
-                <p>Blog</p>
-                <p>お問い合わせ</p>
-            </div>
-        </>
-    );
+	return (
+		<>
+			<div className="classes.nav">
+				<p>Blog</p>
+				<p>お問い合わせ</p>
+			</div>
+		</>
+	);
 };
