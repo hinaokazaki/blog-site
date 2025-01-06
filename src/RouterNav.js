@@ -1,5 +1,4 @@
 import { NavLink, Outlet } from 'react-router-dom';
-// import './RouterNav.css' 
 
 export default function RouterNav() {
 	return (

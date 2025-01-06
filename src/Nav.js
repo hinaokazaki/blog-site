@@ -5,8 +5,10 @@ export default function Nav() {
 	return (	
 		<>
 			<div className={classes.nav}>
-				<p>Blog</p>
-				<p>お問い合わせ</p>
+				<ul>
+					<li><a href="/">Blog</a></li>
+					<li><a href="contact">お問い合わせ</a></li>
+				</ul>
 			</div>
 		</>
 	);

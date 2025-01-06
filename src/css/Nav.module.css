@@ -1,14 +1,27 @@
 .nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	background-color: #333;
-	height: 80px;
+	padding: 1rem 0;
 }
 
-.nav p {
+.nav ul {
+	margin: 0;
+  padding: 0;
+  list-style: none; 
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav li {
+	margin: 0;
+  padding: 0;
+}
+
+.nav a {
 	color: #fff;
 	margin: 0 2rem;
 	font-size: 1.2rem;
 	font-weight: bold;
+	text-decoration: none; 
+  display: block; 
+  padding: 10px 15px; 
 }

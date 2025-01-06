@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './css/Main.module.css';
 
 export default function MainPage({ src }) {
+	// カテゴリーボタンを作成する関数
   const categoriesButton = (categories) => 
 		categories.map((item, index) => 
 		<button key={index} type="button" className={classes['categories-button']}>{item}</button>
