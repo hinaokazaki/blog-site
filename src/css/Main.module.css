@@ -1,28 +1,42 @@
-#main {
+main {
+  margin: 40px auto 0 auto;
+}
+
+.homeMain {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.homeBoxes {
   padding: 0 1rem;
 }
 
-.home-box {
+.homeBox {
   border: 1px solid #ccc;
-  max-width: 1000px;
-  height: 200px;
+  max-width: 100%;
+  height: auto;
   margin: 3rem auto 0;
   display: flex;
   flex-direction: column;
 }
 
-.home-box-nav {
-  width: 90%;
-  margin: 1rem 0 0 5%;
+.postLink {
+  text-decoration: none;
+  display: block;
+  color: #222;
+} 
+
+.homeBoxNav {
+  padding: 1rem 1rem 0 1rem;
   display: flex;
   justify-content: space-between;
 }
 
-.home-box-nav-date {
+.homeBoxNavDate {
   color: #ccc;
 }
 
-.categories-button {
+.categoriesButton {
   border: 1px solid #06c;
   border-radius: 0.2rem;
   color: #06c;
@@ -31,12 +45,12 @@
   background-color: #fff;
 }
 
-.home-box-texts {
+.homeBoxTexts {
   height: 150px;
   margin-left: 5%;
 }
 
-.home-box-texts-title {
+.homeBoxTextsTitle {
   font-weight: lighter;
   font-size: 1.5rem;
 }
