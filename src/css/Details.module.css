@@ -1,0 +1,40 @@
+.detailMain {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.detailBox {
+  padding: 1rem;
+}
+
+.detailImg {
+  height: auto;
+  max-width: 100%;
+}
+
+.detailInfo {
+  padding: 1rem;
+}
+
+.detailBoxNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailBoxNavDate {
+  color: #ccc;
+}
+
+.categoriesButton {
+  border: 1px solid #06c;
+  border-radius: 0.2rem;
+  color: #06c;
+  margin: 0 .3rem;
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.detailBoxTextsTitle {
+  font-weight: lighter;
+  font-size: 1.5rem;
+}
