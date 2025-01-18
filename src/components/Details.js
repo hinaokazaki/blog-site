@@ -2,16 +2,13 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import classes from '../css/Details.module.css';
 import Categories from './Categories';
+import Text from './Text';
 
 export default function Details({ src }) {
   const params = useParams();
   const targetedId = Number(params.id);
   const post = src.find((elem) => elem.id === targetedId);
   
-  const Text = ({content}) => {
-    return <div dangerouslySetInnerHTML={{ __html: content}} />
-  } 
-
   return (
     <>
       <div className={classes.detailMain}>

@@ -2,14 +2,12 @@ import React from 'react';
 import classes from '../css/Main.module.css';
 import { Link } from 'react-router-dom';
 import Categories from './Categories';
+import Text from './Text';
 
 export default function MainPage({ src }) {
 	// 本文のテキストに文字制限をかけた後にhtmlとして表示するようにする関数
 	const maxLength = 60;
 	const fixContentsLength = (content) => content.length > maxLength ? content.slice(0, maxLength) + " ..." : content;
-	const Text = (content) => {
-		return <div dangerouslySetInnerHTML={{ __html: content}} />
-	}
 
 	return (
 		src.map((elem) => (
@@ -24,7 +22,7 @@ export default function MainPage({ src }) {
 								</div>
 								<div className={classes.homeBoxTexts}>
 									<h1 className={classes.homeBoxTextsTitle}>APIで取得した{elem.title}</h1>
-									<p>{Text(fixContentsLength(elem.content))}</p> 
+									<Text content={fixContentsLength(elem.content)} />
 								</div>
 							</div>
 						</Link>
