@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../css/Details.module.css';
+import classes from '../css/Categories.module.css';
 
 export default function Categories({categories}) {
   return (
