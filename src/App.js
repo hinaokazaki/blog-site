@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import Details from './components/Details';
-import { posts } from './data/posts';
+import { posts } from './data/postsList';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Header />
         <Routes>
           <Route path='/' element={<Home />} /> 
-          <Route path='/posts/:id' element={<Details src={posts}/>}/>
+          <Route path='/posts/:id' element={<Details />}/>
           <Route path='/contact' element={<Contact />}/>
         </Routes>
     </div>
