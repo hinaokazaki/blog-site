@@ -26,10 +26,11 @@ export default function Details() {
         // 受け取ったデータをもとにpostsとisLoadingを更新
         const data = await res.json();
         setPost(data.post);
-        setIsLoading(false); //　setPostにデータが入った段階でfalseとして画面の表示を切り替える
-      
       } catch (error) {
         console.error("Failed to fetch post data:", error);
+      } finally {
+        // setPostにデータが入ってエラーもない段階でfalseとして画面の表示を切り替える
+        setIsLoading(false); 
       }
     };
 
@@ -39,7 +40,11 @@ export default function Details() {
   
   // データが取得される間のローディング中の表示、早期リターン
   if (isLoading) 
-    return <div>読み込み中...</div>
+		return <div className={classes.loadingMessage}>読み込み中...</div> 
+
+  // ローディングが終わってpostが空である時の表示、早期リターン
+	if (!isLoading && post.length === 0) 
+		return <div className={classes.errorHandring}>記事が見つかりません。</div>
 
   return (
     <div className={classes.detailMain}>

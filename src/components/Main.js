@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 
 export default function MainPage() {
 	const [posts, setPosts] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
   // APIでpostsを取得する処理をuseEffectで実行
   useEffect(() => {
@@ -17,11 +18,14 @@ export default function MainPage() {
 				if (!res.ok) {
 					throw new Error('HTTP error!');
 				}
-				// 受け取ったデータをもとにpostsを更新
 				const data = await res.json();
+				// 受け取ったデータをもとにpostsを更新
       	setPosts(data.posts);
 			} catch (error) {
 				console.error('postのデータを読み込めませんでした', error);
+			} finally {
+				// setPostにデータが入ってエラーもない段階でfalseとして画面の表示を切り替える
+				setIsLoading(false);
 			}
     };
 
@@ -31,6 +35,14 @@ export default function MainPage() {
 	// 本文のテキストに文字制限をかけた後にhtmlとして表示するようにする関数
 	const maxLength = 60;
 	const fixContentsLength = (content) => content.length > maxLength ? content.slice(0, maxLength) + " ..." : content;
+
+	// データが取得される間のローディング中の表示、早期リターン
+	if (isLoading) 
+		return <div className={classes.loadingMessage}>読み込み中...</div> 
+
+	// ローディングが終わってpostsが空である時の表示、早期リターン
+	if (!isLoading && posts.length === 0) 
+		return <div className={classes.errorHandring}>記事が見つかりません。</div>
 
 	return (
 		posts.map((elem) => (
