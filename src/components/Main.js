@@ -6,7 +6,7 @@ import Text from './Text';
 import { useState, useEffect } from 'react';
 
 export default function MainPage() {
-	const [posts, setPosts] = useState([]);
+	const [posts, setPosts] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
   // APIでpostsを取得する処理をuseEffectで実行
@@ -41,7 +41,7 @@ export default function MainPage() {
 		return <div className={classes.loadingMessage}>読み込み中...</div> 
 
 	// ローディングが終わってpostsが空である時の表示、早期リターン
-	if (!isLoading && posts.length === 0) 
+	if (!isLoading && !posts) 
 		return <div className={classes.errorHandring}>記事が見つかりません。</div>
 
 	return (

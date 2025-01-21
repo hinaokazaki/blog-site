@@ -12,7 +12,7 @@ export default function Details() {
   const targetedId = Number(params.id); 
 
   // APIでデータを取得する際の状態管理
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function Details() {
 		return <div className={classes.loadingMessage}>読み込み中...</div> 
 
   // ローディングが終わってpostが空である時の表示、早期リターン
-	if (!isLoading && post.length === 0) 
+	if (!isLoading && !post) 
 		return <div className={classes.errorHandring}>記事が見つかりません。</div>
 
   return (
