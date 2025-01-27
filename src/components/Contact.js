@@ -6,7 +6,7 @@ export default function Contact() {
   const defaultValues = {
     name: '',
     email: '',
-    comment: ''
+    message: ''
   };
 
   // フォームを初期化
@@ -19,27 +19,20 @@ export default function Contact() {
 
   // サブミット時の処理、APIでデータを送信してアラート表示
   const onsubmit = async (data) => {
-    // リクエストボディの設定
-    const requestBody = {
-      name: data.name,
-      email: data.email,
-      message: data.comment
-    }
-
     try {
       const res = await fetch('https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts', {
         method: 'post',
         header: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestBody) // リクエストボディに設定
+        body: JSON.stringify(data) // リクエストボディに設定
       });
 
       if (res.ok) {
         alert('送信しました。');
         handleClear();
       } else {
-        alert('送信に失敗しました。');
+        throw new Error();
       }
       
     } catch (error) {
@@ -59,7 +52,7 @@ export default function Contact() {
         <div className={classes.formSection}>
           <div className={classes.formBox}>
             <label className={classes.formLabel} htmlFor='name'>お名前 </label>
-            <input className={classes.formInput} id='name' type='text'
+            <input className={classes.formInput} id='name' type='text' disabled={isSubmitting}
               {...register('name', {
                 required: '名前は必須入力です。',
                 maxLength: {
@@ -73,7 +66,7 @@ export default function Contact() {
         <div className={classes.formSection}>
         <div className={classes.formBox}>
           <label className={classes.formLabel} htmlFor='email'>メールアドレス </label>
-          <input className={classes.formInput} id='email' type='text'
+          <input className={classes.formInput} id='email' type='text' disabled={isSubmitting}
             {...register('email', {
               required: 'メールアドレスは必須入力です。',
               pattern: {
@@ -85,9 +78,9 @@ export default function Contact() {
         <div className={classes.errorMessage}>{errors.email?.message}</div>
         </div>
         <div className={classes.formBox}>
-          <label className={classes.formLabel} htmlFor='comment'>本文 </label>
-          <textarea className={classes.textArea} id='comment' type='text'
-            {...register('comment', {
+          <label className={classes.formLabel} htmlFor='message'>本文 </label>
+          <textarea className={classes.textArea} id='message' type='text' disabled={isSubmitting}
+            {...register('message', {
               required: '本文は必須入力です。',
               maxLength: {
                 value: 500,
@@ -95,12 +88,12 @@ export default function Contact() {
               }
             })} />
         </div>
-        <div className={classes.errorMessage}>{errors.comment?.message}</div>
+        <div className={classes.errorMessage}>{errors.message?.message}</div>
         <div className={classes.formButtons}>
           <button className={classes.formSubmitButton} type="submit" disabled={isSubmitting}>
             送信
           </button>
-          <button className={classes.formClearButton} type="button" onClick={handleClear}>
+          <button className={classes.formClearButton} type="button" onClick={handleClear} disabled={isSubmitting}>
             クリア
           </button>
         </div>
